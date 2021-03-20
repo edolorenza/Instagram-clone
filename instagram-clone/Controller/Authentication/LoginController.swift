@@ -35,20 +35,15 @@ class LoginController: ViewController{
         return button
     }()
     
-    private let loginButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitleColor(.white, for: .normal)
-        button.setTitle("Login", for: .normal)
-        button.setHeight(50)
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 5.0
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+    private let loginButton: CustomButton = {
+        let button = CustomButton(title: "Login")
         return button
     }()
     
     private let dontHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
-        button.attributedTitle(firstText: "Don't gave an account ?", secondText: "Sign Up")
+        button.attributedTitle(firstText: "Don't have an account ?", secondText: "Sign Up")
+        button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         return button
     }()
     
@@ -58,6 +53,12 @@ class LoginController: ViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+    }
+    //MARK: - Actions
+    
+    @objc func handleShowSignUp() {
+        let controller = RegistrationController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     //MARK: - helpers
