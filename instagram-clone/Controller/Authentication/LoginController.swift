@@ -15,34 +15,15 @@ class LoginController: ViewController{
         iv.image = #imageLiteral(resourceName: "instagramLogo")
         return iv
     }()
-    private let emailTextField: UITextField =  {
-        let tf = UITextField()
-        tf.borderStyle = .none
-        tf.layer.cornerRadius = 5.0
-        tf.layer.borderWidth = 0.1
-        tf.layer.masksToBounds = true
-        tf.textColor = .black
-        tf.backgroundColor = .init(white: 0.5, alpha: 0.1)
-        tf.keyboardAppearance = .light
+    private let emailTextField: CustomTextField =  {
+        let tf = CustomTextField(placeholder: "Email")
         tf.keyboardType = .emailAddress
-        tf.setHeight(50)
-        tf.attributedPlaceholder = NSAttributedString(string: "Email")
         return tf
     }()
     
-    private let passwordTextField: UITextField =  {
-        let tf = UITextField()
-        tf.borderStyle = .none
-        tf.layer.cornerRadius = 5.0
-        tf.layer.borderWidth = 0.1
-        tf.clipsToBounds = true
-        tf.textColor = .black
-        tf.backgroundColor = .init(white: 0.5, alpha: 0.1)
-        tf.keyboardAppearance = .light
-        tf.keyboardType = .alphabet
-        tf.setHeight(50)
+    private let passwordTextField: CustomTextField =  {
+        let tf = CustomTextField(placeholder: "Password")
         tf.isSecureTextEntry = true
-        tf.attributedPlaceholder = NSAttributedString(string: "Password")
         return tf
     }()
     
@@ -67,12 +48,7 @@ class LoginController: ViewController{
     
     private let dontHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
-        let ats: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: 0.5), .font: UIFont.systemFont(ofSize: 16)]
-        let atributedTitle = NSMutableAttributedString(string: "Don't Have an Account?", attributes: ats)
-        
-        let boldAts: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: 1), .font: UIFont.boldSystemFont(ofSize: 16)]
-        atributedTitle.append(NSAttributedString(string: " Sign Up", attributes: boldAts))
-        button.setAttributedTitle(atributedTitle, for: .normal)
+        button.attributedTitle(firstText: "Don't gave an account ?", secondText: "Sign Up")
         return button
     }()
     
@@ -101,7 +77,7 @@ class LoginController: ViewController{
         self.view.addSubview(stack)
         stack.anchor(top: logoImageView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 32, paddingLeft: 32, paddingRight: 32)
         
-        self.view.addSubview(forgotPasswordButton)
+         self.view.addSubview(forgotPasswordButton)
         forgotPasswordButton.anchor(top: stack.bottomAnchor, right: view.rightAnchor, paddingTop: 8, paddingRight: 32)
         
         self.view.addSubview(loginButton)
