@@ -39,8 +39,7 @@ class LoginController: ViewController{
     }()
     
     private let loginButton: UIButton = {
-        button.setTitle("Login", for: .normal)
-        return button
+        return UIButton.cekbutton(title: "Login")
     }()
         
     

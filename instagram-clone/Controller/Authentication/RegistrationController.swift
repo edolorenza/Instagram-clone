@@ -34,8 +34,7 @@ class RegistrationController: UIViewController{
     private let usernameTextField = CustomTextField(placeholder: "Username")
 
     private let singUpButton: UIButton = {
-        button.setTitle("Sign Up", for: .normal)
-        return button
+        return UIButton.cekbutton(title: "Sign Up")
     }()
     
     private let alreadyHaveAccountButton: UIButton = {
