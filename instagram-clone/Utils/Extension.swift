@@ -50,6 +50,22 @@ extension UIButton {
     }
 }
 
+extension UIButton {
+    static func cekbutton() -> UIButton {
+        let button = UIButton(type: UIButton.ButtonType.system)
+        button.setTitleColor(.white, for: .normal)
+        button.setHeight(50)
+        button.isEnabled = false
+        button.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1).withAlphaComponent(0.5)
+        button.layer.cornerRadius = 5.0
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        return button
+       
+    }
+}
+
+let button = UIButton.cekbutton()
+
 
 
 extension UIView {

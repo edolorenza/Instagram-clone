@@ -33,8 +33,8 @@ class RegistrationController: UIViewController{
     private let fullnameTextField = CustomTextField(placeholder: "Fullname")
     private let usernameTextField = CustomTextField(placeholder: "Username")
 
-    private let singUpButton: CustomButton = {
-        let button = CustomButton(title: "Sign UP")
+    private let singUpButton: UIButton = {
+        button.setTitle("Sign Up", for: .normal)
         return button
     }()
     

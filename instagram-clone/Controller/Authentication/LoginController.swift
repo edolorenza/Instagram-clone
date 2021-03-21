@@ -9,6 +9,9 @@ import UIKit
 
 class LoginController: ViewController{
     //MARK: - Properties
+    
+    private var viewModel = LoginViewModel()
+    
     private let logoImageView: UIImageView =  {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
@@ -35,10 +38,11 @@ class LoginController: ViewController{
         return button
     }()
     
-    private let loginButton: CustomButton = {
-        let button = CustomButton(title: "Login")
+    private let loginButton: UIButton = {
+        button.setTitle("Login", for: .normal)
         return button
     }()
+        
     
     private let dontHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
@@ -53,12 +57,24 @@ class LoginController: ViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureNotificationObservers()
     }
     //MARK: - Actions
     
     @objc func handleShowSignUp() {
         let controller = RegistrationController()
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc func textDidChange(sender: UITextField){
+        if sender == emailTextField{
+            viewModel.email = sender.text
+        }
+        else{
+            viewModel.password = sender.text
+        }
+        loginButton.backgroundColor = viewModel.buttonBgColor
+        loginButton.isEnabled = viewModel.formIsValid
     }
     
     //MARK: - helpers
@@ -87,6 +103,14 @@ class LoginController: ViewController{
         self.view.addSubview(dontHaveAccountButton)
         dontHaveAccountButton.centerX(inView: view)
         dontHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
-        
     }
+    
+    func configureNotificationObservers() {
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+    
+    
 }
+
+
