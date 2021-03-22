@@ -72,8 +72,7 @@ class LoginController: ViewController{
         else{
             viewModel.password = sender.text
         }
-        loginButton.backgroundColor = viewModel.buttonBgColor
-        loginButton.isEnabled = viewModel.formIsValid
+        updateForm()
     }
     
     //MARK: - helpers
@@ -110,6 +109,15 @@ class LoginController: ViewController{
     }
     
     
+}
+
+//MARK: - FormViewModelProtocol
+
+extension LoginController: FormViewModel{
+    func updateForm() {
+        loginButton.backgroundColor = viewModel.buttonBgColor
+        loginButton.isEnabled = viewModel.formIsValid
+    }
 }
 
 
