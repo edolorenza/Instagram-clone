@@ -11,7 +11,7 @@ class RegistrationController: UIViewController{
     //MARK: - Properties
     
     private var viewModel = RegistrationViewModel()
-    
+    private var profileImage: UIImage?
     
     private let addPhotoButton: UIButton =  {
         let button = UIButton(type: .system)
@@ -38,7 +38,15 @@ class RegistrationController: UIViewController{
     private let usernameTextField = CustomTextField(placeholder: "Username")
 
     private let singUpButton: UIButton = {
-        return UIButton.cekbutton(title: "Sign Up")
+        button.setTitleColor(.white, for: .normal)
+        button.setHeight(50)
+        button.isEnabled = false
+        button.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1).withAlphaComponent(0.5)
+        button.layer.cornerRadius = 5.0
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitle("Sign Up", for: .normal)
+        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        return button
     }()
     
     private let alreadyHaveAccountButton: UIButton = {
@@ -87,6 +95,23 @@ class RegistrationController: UIViewController{
         updateForm()
     }
     
+    @objc func handleSignUp(){
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        guard let fullname = fullnameTextField.text else { return }
+        guard let username = usernameTextField.text?.lowercased() else { return }
+        guard let profileImage = self.profileImage else { return }
+
+        let credential = AuthCredentials(email: email, password: password, fullname: fullname, username: username, profileImage: profileImage)
+        AuthService.registerUser(withCredential: credential)  { erorr in
+            if let error = erorr {
+                print("failed to register user \(error.localizedDescription)")
+                return
+            }
+            print("Succes register user")
+        }
+    }
+    
     
     //MARK: - helpers
     func configureUI() {
@@ -133,6 +158,8 @@ extension RegistrationController:  UIImagePickerControllerDelegate, UINavigation
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         guard let selectedImage = info[.editedImage] as? UIImage else {return }
+        profileImage = selectedImage
+        
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.width / 2
         addPhotoButton.layer.masksToBounds = true
         addPhotoButton.layer.borderWidth = 2
