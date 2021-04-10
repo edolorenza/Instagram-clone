@@ -71,7 +71,17 @@ class LoginController: ViewController{
     
     
     @objc func handleLogin() {
-        print("DEBUG: LOGIN")
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+      
+
+       AuthService.logUserIn(withEmail: email, password: password) { (result, erorr) in
+            if let error = erorr {
+                print("failed to login user \(error.localizedDescription)")
+                return
+            }
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc func handleShowSignUp() {

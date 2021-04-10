@@ -19,8 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
          
          Contoh: self.window?.rootViewController = UINavigationController(rootViewController: <Nama Controller yang ingin dilihat>()) */
         window = UIWindow(windowScene: windowScene)
-//        window?.rootViewController =  MainTabController()
-        window?.rootViewController = UINavigationController(rootViewController: LoginController())
+        window?.rootViewController =  MainTabController()
+//        window?.rootViewController = UINavigationController(rootViewController: LoginController())
         window?.makeKeyAndVisible()
         
     }
