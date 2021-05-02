@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		58285EEB32817F7BA27BA501 /* Pods_instagram_clone_instagram_cloneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 859F938D684B4F0828D9BE72 /* Pods_instagram_clone_instagram_cloneUITests.framework */; };
+		6B02E313263ED56E00196812 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02E312263ED56E00196812 /* UserService.swift */; };
+		6B02E318263ED5B000196812 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02E317263ED5B000196812 /* Constant.swift */; };
+		6B02E31D263EDA9100196812 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02E31C263EDA9100196812 /* User.swift */; };
 		6B7A4187260438610050AC21 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A4186260438610050AC21 /* LoginController.swift */; };
 		6B7A418F2604386F0050AC21 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A418E2604386F0050AC21 /* RegistrationController.swift */; };
 		6B7BD245262182ED001DD4CA /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7BD244262182ED001DD4CA /* ImageUploader.swift */; };
@@ -57,6 +60,9 @@
 /* Begin PBXFileReference section */
 		4D94C47F600386FC99163C71 /* Pods-instagram-clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagram-clone.release.xcconfig"; path = "Target Support Files/Pods-instagram-clone/Pods-instagram-clone.release.xcconfig"; sourceTree = "<group>"; };
 		604A12C34FBD6B9690B3472D /* Pods-instagram-cloneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagram-cloneTests.release.xcconfig"; path = "Target Support Files/Pods-instagram-cloneTests/Pods-instagram-cloneTests.release.xcconfig"; sourceTree = "<group>"; };
+		6B02E312263ED56E00196812 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		6B02E317263ED5B000196812 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		6B02E31C263EDA9100196812 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6B7A4186260438610050AC21 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		6B7A418E2604386F0050AC21 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		6B7BD244262182ED001DD4CA /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
@@ -217,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				6B83E1102602FEBD003308E3 /* Extension.swift */,
+				6B02E317263ED5B000196812 /* Constant.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -226,6 +233,7 @@
 			children = (
 				6B7BD244262182ED001DD4CA /* ImageUploader.swift */,
 				6B7BD24926218301001DD4CA /* AuthService.swift */,
+				6B02E312263ED56E00196812 /* UserService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -266,6 +274,7 @@
 		6B83E0EB260238EF003308E3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6B02E31C263EDA9100196812 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -532,12 +541,15 @@
 				6B83E0FD26023C3E003308E3 /* SearchController.swift in Sources */,
 				6B83E1162602FF6F003308E3 /* FeedCell.swift in Sources */,
 				6B83E0B4260237FC003308E3 /* AppDelegate.swift in Sources */,
+				6B02E31D263EDA9100196812 /* User.swift in Sources */,
 				6B83E1112602FEBD003308E3 /* Extension.swift in Sources */,
 				6B83E10C26023C65003308E3 /* ProfileController.swift in Sources */,
 				6B83E0F826023C31003308E3 /* FeedController.swift in Sources */,
 				6B83E0F0260239BE003308E3 /* MainTabController.swift in Sources */,
+				6B02E318263ED5B000196812 /* Constant.swift in Sources */,
 				6B7BD245262182ED001DD4CA /* ImageUploader.swift in Sources */,
 				6B7BD24A26218301001DD4CA /* AuthService.swift in Sources */,
+				6B02E313263ED56E00196812 /* UserService.swift in Sources */,
 				6B8306AF263E760000F8937A /* ProfileCell.swift in Sources */,
 				6B83E0B6260237FC003308E3 /* SceneDelegate.swift in Sources */,
 				6B7A418F2604386F0050AC21 /* RegistrationController.swift in Sources */,
