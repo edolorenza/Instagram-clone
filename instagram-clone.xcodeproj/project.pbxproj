@@ -12,6 +12,8 @@
 		6B7A418F2604386F0050AC21 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A418E2604386F0050AC21 /* RegistrationController.swift */; };
 		6B7BD245262182ED001DD4CA /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7BD244262182ED001DD4CA /* ImageUploader.swift */; };
 		6B7BD24A26218301001DD4CA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7BD24926218301001DD4CA /* AuthService.swift */; };
+		6B8306AF263E760000F8937A /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8306AE263E760000F8937A /* ProfileCell.swift */; };
+		6B8306B4263E761700F8937A /* ProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8306B3263E761700F8937A /* ProfileHeader.swift */; };
 		6B83E0B4260237FC003308E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B83E0B3260237FC003308E3 /* AppDelegate.swift */; };
 		6B83E0B6260237FC003308E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B83E0B5260237FC003308E3 /* SceneDelegate.swift */; };
 		6B83E0B8260237FC003308E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B83E0B7260237FC003308E3 /* ViewController.swift */; };
@@ -59,6 +61,8 @@
 		6B7A418E2604386F0050AC21 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		6B7BD244262182ED001DD4CA /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		6B7BD24926218301001DD4CA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		6B8306AE263E760000F8937A /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		6B8306B3263E761700F8937A /* ProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeader.swift; sourceTree = "<group>"; };
 		6B83E0B0260237FC003308E3 /* instagram-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "instagram-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B83E0B3260237FC003308E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B83E0B5260237FC003308E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +142,15 @@
 				6B7A418E2604386F0050AC21 /* RegistrationController.swift */,
 			);
 			path = Authentication;
+			sourceTree = "<group>";
+		};
+		6B8306B8263E761F00F8937A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				6B8306AE263E760000F8937A /* ProfileCell.swift */,
+				6B8306B3263E761700F8937A /* ProfileHeader.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		6B83E0A7260237FC003308E3 = {
@@ -242,6 +255,7 @@
 		6B83E0EA260238E9003308E3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6B8306B8263E761F00F8937A /* Profile */,
 				6B83E0BE260237FD003308E3 /* LaunchScreen.storyboard */,
 				6B83E1152602FF6F003308E3 /* FeedCell.swift */,
 				6B87D4AC2605A987007903F7 /* CustomTextField.swift */,
@@ -509,6 +523,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B87D4AD2605A987007903F7 /* CustomTextField.swift in Sources */,
+				6B8306B4263E761700F8937A /* ProfileHeader.swift in Sources */,
 				6B83E0B8260237FC003308E3 /* ViewController.swift in Sources */,
 				6B7A4187260438610050AC21 /* LoginController.swift in Sources */,
 				6B83E10226023C4C003308E3 /* ImageSelectorController.swift in Sources */,
@@ -523,6 +538,7 @@
 				6B83E0F0260239BE003308E3 /* MainTabController.swift in Sources */,
 				6B7BD245262182ED001DD4CA /* ImageUploader.swift in Sources */,
 				6B7BD24A26218301001DD4CA /* AuthService.swift in Sources */,
+				6B8306AF263E760000F8937A /* ProfileCell.swift in Sources */,
 				6B83E0B6260237FC003308E3 /* SceneDelegate.swift in Sources */,
 				6B7A418F2604386F0050AC21 /* RegistrationController.swift in Sources */,
 			);
