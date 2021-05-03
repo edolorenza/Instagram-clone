@@ -7,10 +7,15 @@
 
 import UIKit
 
+protocol AuthenticationDelegate: class {
+    func authenticationDidComplete()
+}
+
 class LoginController: ViewController{
     //MARK: - Properties
     
     private var viewModel = LoginViewModel()
+    weak var delegate: AuthenticationDelegate?
     
     private let logoImageView: UIImageView =  {
         let iv = UIImageView()
@@ -80,12 +85,13 @@ class LoginController: ViewController{
                 print("failed to login user \(error.localizedDescription)")
                 return
             }
-            self.dismiss(animated: true, completion: nil)
+            self.delegate?.authenticationDidComplete()
         }
     }
     
     @objc func handleShowSignUp() {
         let controller = RegistrationController()
+        controller.delegate = delegate
         navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -143,5 +149,4 @@ extension LoginController: FormViewModel{
         loginButton.isEnabled = viewModel.formIsValid
     }
 }
-
 
