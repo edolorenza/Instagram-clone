@@ -7,9 +7,32 @@
 
 import UIKit
 
-class SearchController: UIViewController {
+class SearchController: UITableViewController {
+    //MARK: - Properties
+    private let reuseIdentifier = "UserCell"
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
+        configureTableView()
+    }
+    
+    //MARK: - Helpers
+    func configureTableView() {
+        tableView.register(UserCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.rowHeight = 64
+    }
+    
+}
+
+//MARK: - UITableViewDataSource
+extension SearchController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        return cell
     }
 }
