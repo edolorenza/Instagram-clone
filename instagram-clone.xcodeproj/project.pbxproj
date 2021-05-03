@@ -36,6 +36,7 @@
 		6B83E1162602FF6F003308E3 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B83E1152602FF6F003308E3 /* FeedCell.swift */; };
 		6B87D4AD2605A987007903F7 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B87D4AC2605A987007903F7 /* CustomTextField.swift */; };
 		6BBD01CD263FD33900CEAA51 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBD01CC263FD33900CEAA51 /* UserCell.swift */; };
+		6BBD01D2263FE7F900CEAA51 /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBD01D1263FE7F900CEAA51 /* UserCellViewModel.swift */; };
 		6BCDD7FE2606FA6200017FAD /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCDD7FD2606FA6200017FAD /* AuthenticationViewModel.swift */; };
 		6BED15792621668800A441B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BED15782621668800A441B5 /* GoogleService-Info.plist */; };
 		6FE2D1E67E3A64324127D43D /* Pods_instagram_cloneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D79F4329C66739EC788BB43 /* Pods_instagram_cloneTests.framework */; };
@@ -96,6 +97,7 @@
 		6B83E1152602FF6F003308E3 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		6B87D4AC2605A987007903F7 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		6BBD01CC263FD33900CEAA51 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		6BBD01D1263FE7F900CEAA51 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
 		6BCDD7FD2606FA6200017FAD /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		6BED15782621668800A441B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		730CD9E4024C80F76F27FE80 /* Pods-instagram-clone-instagram-cloneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagram-clone-instagram-cloneUITests.release.xcconfig"; path = "Target Support Files/Pods-instagram-clone-instagram-cloneUITests/Pods-instagram-clone-instagram-cloneUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 			children = (
 				6BCDD7FD2606FA6200017FAD /* AuthenticationViewModel.swift */,
 				6B02E321263EE00100196812 /* ProfileHeaderViewModel.swift */,
+				6BBD01D1263FE7F900CEAA51 /* UserCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				6B02E322263EE00100196812 /* ProfileHeaderViewModel.swift in Sources */,
 				6B83E10C26023C65003308E3 /* ProfileController.swift in Sources */,
 				6B83E0F826023C31003308E3 /* FeedController.swift in Sources */,
+				6BBD01D2263FE7F900CEAA51 /* UserCellViewModel.swift in Sources */,
 				6B83E0F0260239BE003308E3 /* MainTabController.swift in Sources */,
 				6B02E318263ED5B000196812 /* Constant.swift in Sources */,
 				6B7BD245262182ED001DD4CA /* ImageUploader.swift in Sources */,
