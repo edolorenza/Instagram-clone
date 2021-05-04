@@ -50,7 +50,6 @@ class ProfileHeader: UICollectionReusableView {
        let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.attributedText = attributedStatText(value: 27, label: "Posts")
         return label
     }()
     
@@ -58,7 +57,6 @@ class ProfileHeader: UICollectionReusableView {
        let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.attributedText = attributedStatText(value: 8821, label: "Followers")
         return label
     }()
     
@@ -66,7 +64,6 @@ class ProfileHeader: UICollectionReusableView {
        let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.attributedText = attributedStatText(value: 643, label: "Following")
         return label
     }()
     
@@ -156,12 +153,6 @@ class ProfileHeader: UICollectionReusableView {
     }
     
     //MARK: -Helpers
-    func attributedStatText(value: Int, label: String) -> NSAttributedString {
-        let attributedText = NSMutableAttributedString(string: "\(value)\n", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
-        attributedText.append(NSAttributedString(string: label, attributes: [.font: UIFont.systemFont(ofSize: 14), .foregroundColor: UIColor.lightGray]))
-        return attributedText
-    }
-    
     func configure() {
         guard let viewModel = viewModel else { return }
         
@@ -172,5 +163,10 @@ class ProfileHeader: UICollectionReusableView {
         
         nameLabel.text = viewModel.fullname
         profileImageView.sd_setImage(with: viewModel.profileImages)
+        
+        postsLabel.attributedText = viewModel.numberOfPost
+        followersLabel.attributedText = viewModel.numberOfFollowers
+        followingLabel.attributedText = viewModel.numberOfFollowing
+        
     }
 }
