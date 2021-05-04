@@ -94,10 +94,14 @@ extension ProfileController: ProfileHeaderDelegate {
             print("edit profile")
         }
         else if user.isFollowed{
-            print("handle UNfollow user")
+            UserService.unfollow(uid: user.uid) { error in
+                self.user.isFollowed = false
+                self.collectionView.reloadData()
+            }
         }else {
             UserService.follow(uid: user.uid) { error in
-                print("FOOLLOW USER UID")
+                self.user.isFollowed = true
+                self.collectionView.reloadData()
             }
         }
     }
