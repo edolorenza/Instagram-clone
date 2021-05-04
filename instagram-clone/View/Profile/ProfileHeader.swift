@@ -16,6 +16,7 @@ protocol ProfileHeaderDelegate: class {
 
 class ProfileHeader: UICollectionReusableView {
     //MARK: -properties
+    
     var viewModel: ProfileHeaderViewModel? {
         didSet { configure() }
     }
@@ -169,4 +170,7 @@ class ProfileHeader: UICollectionReusableView {
         followingLabel.attributedText = viewModel.numberOfFollowing
         
     }
+    
+    
 }
+

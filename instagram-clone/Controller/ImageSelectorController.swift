@@ -10,6 +10,6 @@ import UIKit
 class ImageSelectorController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .brown
+        view.backgroundColor = .white
     }
 }

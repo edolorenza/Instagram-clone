@@ -12,6 +12,8 @@
 		6B02E318263ED5B000196812 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02E317263ED5B000196812 /* Constant.swift */; };
 		6B02E31D263EDA9100196812 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02E31C263EDA9100196812 /* User.swift */; };
 		6B02E322263EE00100196812 /* ProfileHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B02E321263EE00100196812 /* ProfileHeaderViewModel.swift */; };
+		6B69404A2641732F0032D5E4 /* UploadPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6940492641732F0032D5E4 /* UploadPostController.swift */; };
+		6B69404F264179250032D5E4 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69404E264179250032D5E4 /* InputTextView.swift */; };
 		6B7A4187260438610050AC21 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A4186260438610050AC21 /* LoginController.swift */; };
 		6B7A418F2604386F0050AC21 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A418E2604386F0050AC21 /* RegistrationController.swift */; };
 		6B7BD245262182ED001DD4CA /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7BD244262182ED001DD4CA /* ImageUploader.swift */; };
@@ -67,6 +69,8 @@
 		6B02E317263ED5B000196812 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		6B02E31C263EDA9100196812 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6B02E321263EE00100196812 /* ProfileHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderViewModel.swift; sourceTree = "<group>"; };
+		6B6940492641732F0032D5E4 /* UploadPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostController.swift; sourceTree = "<group>"; };
+		6B69404E264179250032D5E4 /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
 		6B7A4186260438610050AC21 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		6B7A418E2604386F0050AC21 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		6B7BD244262182ED001DD4CA /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 			children = (
 				6B83E1102602FEBD003308E3 /* Extension.swift */,
 				6B02E317263ED5B000196812 /* Constant.swift */,
+				6B69404E264179250032D5E4 /* InputTextView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 				6B83E10126023C4C003308E3 /* ImageSelectorController.swift */,
 				6B83E10626023C59003308E3 /* NotificationController.swift */,
 				6B83E10B26023C65003308E3 /* ProfileController.swift */,
+				6B6940492641732F0032D5E4 /* UploadPostController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -542,6 +548,7 @@
 			files = (
 				6B87D4AD2605A987007903F7 /* CustomTextField.swift in Sources */,
 				6B8306B4263E761700F8937A /* ProfileHeader.swift in Sources */,
+				6B69404A2641732F0032D5E4 /* UploadPostController.swift in Sources */,
 				6B83E0B8260237FC003308E3 /* ViewController.swift in Sources */,
 				6B7A4187260438610050AC21 /* LoginController.swift in Sources */,
 				6B83E10226023C4C003308E3 /* ImageSelectorController.swift in Sources */,
@@ -554,6 +561,7 @@
 				6B02E31D263EDA9100196812 /* User.swift in Sources */,
 				6B83E1112602FEBD003308E3 /* Extension.swift in Sources */,
 				6B02E322263EE00100196812 /* ProfileHeaderViewModel.swift in Sources */,
+				6B69404F264179250032D5E4 /* InputTextView.swift in Sources */,
 				6B83E10C26023C65003308E3 /* ProfileController.swift in Sources */,
 				6B83E0F826023C31003308E3 /* FeedController.swift in Sources */,
 				6BBD01D2263FE7F900CEAA51 /* UserCellViewModel.swift in Sources */,
