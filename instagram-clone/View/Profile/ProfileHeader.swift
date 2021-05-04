@@ -8,11 +8,20 @@
 import UIKit
 import SDWebImage
 
+protocol ProfileHeaderDelegate: class {
+    func header(_ profileHeader: ProfileHeader, didTapActionButtonFor user: User)
+//    func header(_ profileHeader: ProfileHeader, wantsToUnfollow uid: String)
+//    func headerWantsToShowEditProfile(_ profileHeader: ProfileHeader)
+}
+
 class ProfileHeader: UICollectionReusableView {
     //MARK: -properties
     var viewModel: ProfileHeaderViewModel? {
         didSet { configure() }
     }
+    
+    weak var delegate: ProfileHeaderDelegate?
+    
     private let profileImageView: UIImageView = {
        let iv = UIImageView()
         iv.clipsToBounds = true
@@ -27,7 +36,7 @@ class ProfileHeader: UICollectionReusableView {
     }()
     
     private lazy var editProfileFollowButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: UIButton.ButtonType.system)
         button.setTitle("Edit Profile", for: .normal)
         button.layer.cornerRadius = 3
         button.layer.borderWidth = 0.5
@@ -142,7 +151,8 @@ class ProfileHeader: UICollectionReusableView {
     //MARK: -Actions
 
     @objc func handleEditProfileTapped(){
-       
+        guard let viewModel = viewModel else { return }
+        delegate?.header(self, didTapActionButtonFor: viewModel.user)
     }
     
     //MARK: -Helpers
@@ -154,6 +164,9 @@ class ProfileHeader: UICollectionReusableView {
     
     func configure() {
         guard let viewModel = viewModel else { return }
+        editProfileFollowButton.setTitle(viewModel.followButtonText, for: .normal)
+        editProfileFollowButton.setTitleColor(viewModel.followButtonTextColor, for: .normal)
+        editProfileFollowButton.backgroundColor = viewModel.followButtonBackgroundColor
         
         nameLabel.text = viewModel.fullname
         profileImageView.sd_setImage(with: viewModel.profileImages)
