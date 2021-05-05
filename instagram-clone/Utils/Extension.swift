@@ -15,7 +15,7 @@ extension UIViewController {
 
     func showLoader(_ show: Bool) {
         view.endEditing(true)
-
+        UIViewController.hud.isUserInteractionEnabled = false
         if show {
             UIViewController.hud.show(in: view)
         } else {
