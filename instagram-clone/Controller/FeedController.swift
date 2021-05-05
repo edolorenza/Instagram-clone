@@ -58,7 +58,6 @@ class FeedController: UICollectionViewController {
     func fetchPosts() {
         PostService.fetchPosts { posts in
             self.posts = posts
-            print("DEBUG : Did fetch post")
             self.collectionView.refreshControl?.endRefreshing()
             self.collectionView.reloadData()
         }
