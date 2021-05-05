@@ -10,8 +10,6 @@ import SDWebImage
 
 protocol ProfileHeaderDelegate: class {
     func header(_ profileHeader: ProfileHeader, didTapActionButtonFor user: User)
-//    func header(_ profileHeader: ProfileHeader, wantsToUnfollow uid: String)
-//    func headerWantsToShowEditProfile(_ profileHeader: ProfileHeader)
 }
 
 class ProfileHeader: UICollectionReusableView {
