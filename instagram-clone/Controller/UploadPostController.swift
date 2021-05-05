@@ -7,13 +7,23 @@
 
 import UIKit
 
+protocol UploadPostControllerDelegte: class {
+    func controllerDidFinishUploadLoadingPost(_ controller: UploadPostController)
+}
+
 class UploadPostController: UIViewController {
     //MARK: - Properties
+    weak var delegate: UploadPostControllerDelegte?
+    
+    var selectedImage: UIImage? {
+        didSet { photoImageView.image = selectedImage }
+    }
+    
     private let photoImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
-        iv.image = #imageLiteral(resourceName: "avenger")
+        
         return iv
     }()
     
@@ -48,7 +58,16 @@ class UploadPostController: UIViewController {
     }
     
     @objc func didTapShare() {
-        print("DEBUG: Post Share here...")
+        guard let image = selectedImage else { return }
+        guard let caption = captionText.text else { return }
+        
+        PostService.uploadPost(caption: caption, image: image) { error in
+            if let error = error {
+                print("DEBUG: failed to upload post with error \(error.localizedDescription)")
+                return
+            }
+            self.delegate?.controllerDidFinishUploadLoadingPost(self)
+        }
     }
     //MARK: - Helpers
     func checkMaxLength(_ textView: UITextView) {
