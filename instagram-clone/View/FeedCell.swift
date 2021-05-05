@@ -143,6 +143,8 @@ class FeedCell: UICollectionViewCell{
         guard let viewModel = viewModel else {  return }
         captionLabel.text = viewModel.caption
         postImageView.sd_setImage(with: viewModel.imageUrl)
-        likeLabel.text = "\(viewModel.likes) likes"
+        likeLabel.text = viewModel.likes
+        usernameButton.setTitle(viewModel.ownerUsername, for: .normal)
+        profileImageView.sd_setImage(with: viewModel.ownerImageUrl)
     }
 }
