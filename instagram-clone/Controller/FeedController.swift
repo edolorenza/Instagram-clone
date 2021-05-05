@@ -27,6 +27,10 @@ class FeedController: UICollectionViewController {
         collectionView.backgroundColor = .white
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView.refreshControl = refresher
     }
     
     //MARK: - ACTIONS
@@ -45,11 +49,17 @@ class FeedController: UICollectionViewController {
         }
     }
     
+    @objc func handleRefresh() {
+        fetchPosts()
+    }
+    
     //MARK: - API
     
     func fetchPosts() {
         PostService.fetchPosts { posts in
             self.posts = posts
+            print("DEBUG : Did fetch post")
+            self.collectionView.refreshControl?.endRefreshing()
             self.collectionView.reloadData()
         }
     }
