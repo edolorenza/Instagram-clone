@@ -14,6 +14,7 @@ class CommentController: UICollectionViewController {
     private lazy var commentInputView: CommentInputAccessoryView = {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
         let cv = CommentInputAccessoryView(frame: frame)
+        cv.commentDelegate = self
         return cv
     }()
     
@@ -25,8 +26,10 @@ class CommentController: UICollectionViewController {
     
     //MARK: -Helpers
     func configureCollectionView() {
-        navigationItem.title = "Comment"
+        navigationItem.title = "Comments"
         collectionView.backgroundColor = .white
+        collectionView.alwaysBounceVertical = true
+        collectionView.keyboardDismissMode = .interactive
         collectionView.register(CommentCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
@@ -56,7 +59,7 @@ class CommentController: UICollectionViewController {
 //MARK: - UICOllectionViewDataSource
 extension CommentController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 10
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -73,4 +76,12 @@ extension CommentController: UICollectionViewDelegateFlowLayout {
     }
 
 
+}
+
+//MARK: - Comment Delegate
+extension CommentController: CommentInputAccessoryViewDelegate {
+    func inputview(_ inputView: CommentInputAccessoryView, wantsToUploadComment comment: String) {
+        inputView.clearCommentTextView()
+        print("Debug commes is \(comment)")
+    }
 }

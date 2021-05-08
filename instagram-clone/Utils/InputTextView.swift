@@ -14,7 +14,7 @@ class InputTextView: UITextView {
         didSet { placeHolderLabel.text = placeHolderText}
     }
     
-    private let placeHolderLabel: UILabel = {
+    var placeHolderLabel: UILabel = {
         let label = UILabel()
         label.textColor = .lightGray
         return label
