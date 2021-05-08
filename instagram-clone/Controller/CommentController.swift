@@ -8,8 +8,15 @@
 import UIKit
 
 class CommentController: UICollectionViewController {
+    
     //MARK: - Properties
-     private let reuseIdentifier = "CommentCell"
+    private let reuseIdentifier = "CommentCell"
+    private lazy var commentInputView: CommentInputAccessoryView = {
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        let cv = CommentInputAccessoryView(frame: frame)
+        return cv
+    }()
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +28,25 @@ class CommentController: UICollectionViewController {
         navigationItem.title = "Comment"
         collectionView.backgroundColor = .white
         collectionView.register(CommentCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+    }
+    
+    override var inputAccessoryView: UIView? {
+        get { return commentInputView }
+    }
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
+    
+    // Hide tab bar when comment a post
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
     //MARK: - API
     
@@ -35,7 +61,6 @@ extension CommentController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        cell.backgroundColor = .red
         return cell
     }
 }
