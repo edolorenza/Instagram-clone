@@ -94,12 +94,31 @@ class FeedCell: UICollectionViewCell{
     }()
     
     private var stackView = UIStackView()
-    //MARK: - lifecycle
     
+    //MARK: - lifecycle
     override init (frame: CGRect){
     super.init(frame: frame)
         self.backgroundColor = .white
+        setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) Has Not Been Implemented")
+    }
+    
+    //MARK: - Actions
+    @objc func didTapUsername() {
         
+    }
+    
+    @objc func didTapComment() {
+        guard let viewModel = viewModel else { return }
+        delegate?.cell(self, wantsToShowCommentFor: viewModel.post)
+        print("DEBUG: view comment\(viewModel.post.caption)")
+    }
+    
+    //MARK: - helpers
+    func setupView() {
         self.addSubview(profileImageView)
         profileImageView.anchor(top: topAnchor, left: leftAnchor,
                                 paddingTop: 12, paddingLeft: 12)
@@ -126,23 +145,6 @@ class FeedCell: UICollectionViewCell{
         self.addSubview(postTimeLabel)
         postTimeLabel.anchor(top: captionLabel.bottomAnchor, left: leftAnchor, paddingTop: 4, paddingLeft: 10)
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) Has Not Been Implemented")
-    }
-    
-    //MARK: - Actions
-    @objc func didTapUsername() {
-        
-    }
-    
-    @objc func didTapComment() {
-        guard let viewModel = viewModel else { return }
-        delegate?.cell(self, wantsToShowCommentFor: viewModel.post)
-        print("DEBUG: view comment\(viewModel.post.caption)")
-    }
-    
-    //MARK: - helpers
     
     func configureActionButton(){
         stackView = UIStackView(arrangedSubviews: [likeButton, commentButton, shareButton])
