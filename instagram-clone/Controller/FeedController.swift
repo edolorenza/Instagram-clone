@@ -102,5 +102,14 @@ extension FeedController: FeedCellDelegate {
         navigationController?.pushViewController(controller, animated: true)
     }
     
+    func cell(_ cell: FeedCell, didLike post: Post) {
+        cell.viewModel?.post.didLike.toggle()
+        if post.didLike {
+            print("DEBUG: UNLIKE POST")
+        }else {
+            print("DEBUGL LIKE POST")
+        }
+    }
+    
     
 }
