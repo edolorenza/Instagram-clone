@@ -114,7 +114,6 @@ class FeedCell: UICollectionViewCell{
     @objc func didTapComment() {
         guard let viewModel = viewModel else { return }
         delegate?.cell(self, wantsToShowCommentFor: viewModel.post)
-        print("DEBUG: view comment\(viewModel.post.caption)")
     }
     
     //MARK: - helpers

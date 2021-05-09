@@ -6,9 +6,15 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CommentCell: UICollectionViewCell {
     //MARK: -properties
+    
+    var viewModel: CommentViewModel? {
+        didSet { configure() }
+    }
+    
     private let profileImageView: UIImageView =  {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
@@ -23,9 +29,6 @@ class CommentCell: UICollectionViewCell {
     private let commentLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 13)
-        let atributedString = NSMutableAttributedString(string: "Venom", attributes: [.font: UIFont.boldSystemFont(ofSize: 14)])
-        atributedString.append(NSAttributedString(string: " text of comment...", attributes: [.font: UIFont.systemFont(ofSize: 14)]))
-        label.attributedText = atributedString
         return label
     }()
     
@@ -47,10 +50,17 @@ class CommentCell: UICollectionViewCell {
         addSubview(profileImageView)
         profileImageView.setDimensions(height: 48, width: 48)
         profileImageView.layer.cornerRadius = 48 / 2
-        profileImageView.centerY(inView: self, leftAnchor: leftAnchor, paddingLeft: 12)
+        profileImageView.anchor(top:topAnchor, left: leftAnchor, paddingLeft: 12 )
+        
         
         addSubview(commentLabel)
-        commentLabel.centerY(inView:profileImageView , leftAnchor: profileImageView.rightAnchor, paddingLeft: 8)
+        commentLabel.numberOfLines = 0
+        commentLabel.anchor(top:topAnchor, left: profileImageView.rightAnchor, right: rightAnchor, paddingLeft: 8, paddingRight: 8)
         
+    }
+    
+    func configure() {
+        profileImageView.sd_setImage(with: viewModel?.profileImageUrl)
+        commentLabel.attributedText = viewModel?.commentLabel()
     }
 }

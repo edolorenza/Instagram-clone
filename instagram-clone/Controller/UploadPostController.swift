@@ -57,7 +57,6 @@ class UploadPostController: UIViewController {
      //MARK: - Actions
     @objc func didTapCancel() {
         self.delegate?.controllerDidFinishUploadLoadingPost(self)
-        print("DEBUG: cancel post")
     }
     
     @objc func didTapShare() {
