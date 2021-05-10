@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol FeedCellDelegate: class {
+protocol FeedCellDelegate: AnyObject {
     func cell(_ cell: FeedCell, wantsToShowCommentFor post: Post)
     func cell(_ cell: FeedCell, didLike post: Post)
 }
@@ -51,7 +51,7 @@ class FeedCell: UICollectionViewCell{
         return iv
     }()
     
-    private lazy var likeButton: UIButton =  {
+    lazy var likeButton: UIButton =  {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "like_unselected"), for: .normal)
         button.tintColor = .black

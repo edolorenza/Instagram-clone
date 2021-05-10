@@ -107,7 +107,10 @@ extension FeedController: FeedCellDelegate {
         if post.didLike {
             print("DEBUG: UNLIKE POST")
         }else {
-            print("DEBUGL LIKE POST")
+            PostService.likePOst(post: post) { error in
+                cell.likeButton.setImage(#imageLiteral(resourceName: "like_selected"), for: .normal)
+                cell.likeButton.tintColor = .red
+            }
         }
     }
     
