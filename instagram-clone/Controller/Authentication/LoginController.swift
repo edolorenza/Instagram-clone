@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol AuthenticationDelegate: class {
+protocol AuthenticationDelegate: AnyObject {
     func authenticationDidComplete()
 }
 

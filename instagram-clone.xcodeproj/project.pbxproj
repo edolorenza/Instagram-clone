@@ -297,8 +297,8 @@
 		6B83E0E9260238E7003308E3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				6BCDD7FD2606FA6200017FAD /* AuthenticationViewModel.swift */,
 				6B02E321263EE00100196812 /* ProfileHeaderViewModel.swift */,
+				6BCDD7FD2606FA6200017FAD /* AuthenticationViewModel.swift */,
 				6BBD01D1263FE7F900CEAA51 /* UserCellViewModel.swift */,
 				6B69405D2642863C0032D5E4 /* PostViewModel.swift */,
 				6B68EFD42647B1F9008066CF /* CommentViewModel.swift */,
