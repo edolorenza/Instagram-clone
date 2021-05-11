@@ -166,6 +166,9 @@ class FeedCell: UICollectionViewCell{
         captionLabel.text = viewModel.caption
         postImageView.sd_setImage(with: viewModel.imageUrl)
         likeLabel.text = viewModel.likes
+        likeButton.tintColor = viewModel.likeButtonTintColor
+        likeButton.setImage(viewModel.likeButtonImage, for: .normal)
+        
         usernameButton.setTitle(viewModel.ownerUsername, for: .normal)
         profileImageView.sd_setImage(with: viewModel.ownerImageUrl)
     }
