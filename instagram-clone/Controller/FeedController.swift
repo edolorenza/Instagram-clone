@@ -105,7 +105,10 @@ extension FeedController: FeedCellDelegate {
     func cell(_ cell: FeedCell, didLike post: Post) {
         cell.viewModel?.post.didLike.toggle()
         if post.didLike {
-            print("DEBUG: UNLIKE POST")
+            PostService.unlikePost(post: post) { Error in
+                cell.likeButton.setImage(#imageLiteral(resourceName: "like_unselected"), for: .normal)
+                cell.likeButton.tintColor = .clear
+            }
         }else {
             PostService.likePOst(post: post) { error in
                 cell.likeButton.setImage(#imageLiteral(resourceName: "like_selected"), for: .normal)
