@@ -25,6 +25,18 @@ class NotificationController: UITableViewController {
     func fetchNotifications(){
         NotificationService.fetchNotifications { notifications in
             self.notifications = notifications
+            self.checkIfUserIsFollowed()
+        }
+    }
+    
+    func checkIfUserIsFollowed() {
+        notifications.forEach { notifications in
+            guard notifications.type == .follow else { return }
+            UserService.checkIfuserIsFollowed(uid: notifications.uid) { isFollowed in
+                if let index = self.notifications.firstIndex(where: { $0.id == notifications.id }) {
+                    self.notifications[index].userIsFollowed = isFollowed
+                }
+            }
         }
     }
     
@@ -55,5 +67,26 @@ extension NotificationController {
     }
 }
 
+//MARK: - UITableViewDelegate
 
+extension NotificationController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+}
 
+extension NotificationController: NotificationCellDelegate {
+    func cell(_ cell: NotificationCell, wantsToFollow uid: String) {
+        print("DEBUG:  follow user here")
+    }
+    
+    func cell(_ cell: NotificationCell, wantsToUnfollow uid: String) {
+        print("DEBUG : UNFOLLOW USER HERE")
+    }
+    
+    func cell(_ cell: NotificationCell, wantsToViewPost postId: String) {
+        print("DEBUG: VIEW POST HERE")
+    }
+    
+    
+}
