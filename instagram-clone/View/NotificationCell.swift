@@ -9,12 +9,15 @@ import UIKit
 
 class NotificationCell: UITableViewCell {
     //MARK: - Properteis
+    
+    var viewModel: NotificationViewModel? {
+        didSet {  configure() }
+    }
     private let profileImageView: UIImageView = {
        let iv = UIImageView()
         iv.contentMode = .scaleToFill
         iv.clipsToBounds = true
         iv.backgroundColor = .lightGray
-        iv.image = #imageLiteral(resourceName: "venom-7")
         return iv
     }()
     
@@ -90,5 +93,10 @@ class NotificationCell: UITableViewCell {
         postImageView.centerY(inView: self)
         postImageView.anchor(right: rightAnchor, paddingRight: 8, width: 44, height: 44)
         
+    }
+    
+    func configure() {
+        guard let viewModel = viewModel else { return }
+        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
     }
 }

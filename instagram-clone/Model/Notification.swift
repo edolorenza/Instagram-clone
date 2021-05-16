@@ -32,6 +32,8 @@ struct Notification {
     var postId: String?
     let type: NotificationType
     let id: String
+    let userProfileImageUrl: String?
+    let username: String?
     
     init(dictionary: [String: Any]) {
         self.timestamp = dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())
@@ -39,6 +41,8 @@ struct Notification {
         self.postImageUrl = dictionary["postImageUrl"] as? String ?? ""
         self.postId = dictionary["postId"] as? String ?? ""
         self.uid = dictionary["uid"] as? String ?? ""
+        self.userProfileImageUrl = dictionary["userProfileImageUrl"] as? String ?? ""
+        self.username = dictionary["username"] as? String ?? ""
         self.type = NotificationType(rawValue: dictionary["type"] as? Int ?? 0) ?? .like
     }
 }
