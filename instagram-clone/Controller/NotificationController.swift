@@ -10,14 +10,25 @@ import UIKit
 class NotificationController: UITableViewController {
     //MARK: - Properties
     private let reuseIdentifier = "NotificationCell"
+    private var notifications = [Notification]() {
+        didSet { tableView.reloadData() }
+    }
     
     //MARK: - Lifycycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        fetchNotifications()
     }
     
     //MARK: - API
+    func fetchNotifications(){
+        NotificationService.fetchNotifications { notifications in
+            self.notifications = notifications
+            print("DEBUG: notification \(notifications)")
+        }
+    }
+    
     
     //MARK: - Action
     
@@ -35,7 +46,7 @@ class NotificationController: UITableViewController {
 extension NotificationController {
   
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return notifications.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
