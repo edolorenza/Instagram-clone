@@ -35,11 +35,12 @@ class NotificationCell: UITableViewCell {
     }()
     
     private lazy var postImageView: UIImageView = {
-       let iv = UIImageView()
+        let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.backgroundColor = .lightGray
-        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapPostImge))
+        iv.image = #imageLiteral(resourceName: "venom-7")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapPostImage))
         iv.isUserInteractionEnabled = true
         iv.addGestureRecognizer(tap)
         return iv
@@ -53,7 +54,6 @@ class NotificationCell: UITableViewCell {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(handleFollowUser), for: .touchUpInside)
-        button.isUserInteractionEnabled = true
         return button
     }()
     
@@ -70,12 +70,21 @@ class NotificationCell: UITableViewCell {
     
     //MARK: - Actions
     @objc func handleFollowUser() {
-        print("DEBUG: follow user")
+        guard let viewModel = viewModel else { return }
+        if viewModel.notification.userIsFollowed {
+            delegate?.cell(self, wantsToUnfollow: viewModel.notification.uid)
+        }else {
+            delegate?.cell(self, wantsToFollow: viewModel.notification.uid)
+        }
     }
     
-    @objc func didTapPostImge(){
+    @objc func didTapPostImage(){
         guard let postId = viewModel?.notification.postId else { return }
         delegate?.cell(self, wantsToViewPost: postId)
+    }
+    
+    @objc func didTapProfileImage() {
+        print("DEBUG: tap profile image")
     }
     
     //MARK: - Helpers
@@ -87,13 +96,13 @@ class NotificationCell: UITableViewCell {
         profileImageView.centerY(inView: self, leftAnchor: leftAnchor, paddingLeft: 12)
         
         
-        addSubview(followButton)
+        contentView.addSubview(followButton)
         followButton.centerY(inView: self)
         followButton.anchor(right: rightAnchor, paddingRight: 8)
         followButton.width(frame.width / 4.5)
         followButton.height(32)
         
-        addSubview(postImageView)
+        contentView.addSubview(postImageView)
         postImageView.centerY(inView: self)
         postImageView.anchor(right: rightAnchor, paddingRight: 8, width: 44, height: 44)
         

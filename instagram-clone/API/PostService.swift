@@ -49,6 +49,17 @@ struct PostService {
         }
     }
     
+    
+    static func fetchSinglePost(withPostId postId: String, completion: @escaping(Post) -> Void){
+        COLLECTION_POSTS.document(postId).getDocument { snapshot, _ in
+            guard let snapshot = snapshot else { return }
+            guard let data = snapshot.data() else { return }
+            let post = Post(postId: snapshot.documentID, dictionary: data)
+            completion(post)
+        }
+    }
+    
+    
     static func likePOst(post: Post, completion: @escaping(FirestoreCompletion)) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
