@@ -17,7 +17,6 @@ class NotificationCell: UITableViewCell {
        let iv = UIImageView()
         iv.contentMode = .scaleToFill
         iv.clipsToBounds = true
-        iv.backgroundColor = .lightGray
         return iv
     }()
     
@@ -33,7 +32,6 @@ class NotificationCell: UITableViewCell {
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.backgroundColor = .lightGray
-        iv.image = #imageLiteral(resourceName: "venom-7")
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapPostImge))
         iv.isUserInteractionEnabled = true
         iv.addGestureRecognizer(tap)
@@ -79,8 +77,6 @@ class NotificationCell: UITableViewCell {
         profileImageView.layer.cornerRadius = 48 / 2
         profileImageView.centerY(inView: self, leftAnchor: leftAnchor, paddingLeft: 12)
         
-        addSubview(infoLabel)
-        infoLabel.centerY(inView: profileImageView, leftAnchor: profileImageView.rightAnchor, paddingLeft: 8)
         
         addSubview(followButton)
         followButton.centerY(inView: self)
@@ -88,10 +84,13 @@ class NotificationCell: UITableViewCell {
         followButton.width(frame.width / 4.5)
         followButton.height(32)
         
-        followButton.isHidden = true
         addSubview(postImageView)
         postImageView.centerY(inView: self)
         postImageView.anchor(right: rightAnchor, paddingRight: 8, width: 44, height: 44)
+        
+        addSubview(infoLabel)
+        infoLabel.centerY(inView: profileImageView, leftAnchor: profileImageView.rightAnchor, paddingLeft: 8)
+        infoLabel.anchor(right: followButton.leftAnchor, paddingRight: 4)
         
     }
     
@@ -99,7 +98,8 @@ class NotificationCell: UITableViewCell {
         guard let viewModel = viewModel else { return }
         profileImageView.sd_setImage(with: viewModel.profileImageUrl)
         postImageView.sd_setImage(with: viewModel.postImageUrl)
-        
+        followButton.isHidden = !viewModel.shouldHidePostImage
+        postImageView.isHidden = viewModel.shouldHidePostImage
         infoLabel.attributedText = viewModel.notificationMessage
     }
 }

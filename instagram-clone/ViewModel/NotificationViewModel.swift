@@ -30,5 +30,7 @@ struct NotificationViewModel {
         atributedText.append(NSAttributedString(string: "  2m", attributes: [.font: UIFont.systemFont(ofSize: 12), .foregroundColor: UIColor.lightGray]))
         return atributedText
     }
+    
+    var shouldHidePostImage: Bool {return self.notification.type == .follow}
 }
 
