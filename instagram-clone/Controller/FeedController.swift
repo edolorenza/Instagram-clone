@@ -16,6 +16,7 @@ class FeedController: UICollectionViewController {
         didSet { collectionView.reloadData()}
     }
     var post: Post?
+    let refresher = UIRefreshControl()
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -32,7 +33,6 @@ class FeedController: UICollectionViewController {
         if post == nil {
             navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
         }
-        let refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         collectionView.refreshControl = refresher
     }
@@ -54,17 +54,16 @@ class FeedController: UICollectionViewController {
     }
     
     @objc func handleRefresh() {
+        posts.removeAll()
         fetchPosts()
+        refresher.endRefreshing()
     }
     
     //MARK: - API
-    
     func fetchPosts() {
         PostService.fetchFeedPosts { posts in
-            
             self.posts = posts
             self.checkIfUserLikedPosts()
-            self.collectionView.refreshControl?.endRefreshing()
         }
     }
    
