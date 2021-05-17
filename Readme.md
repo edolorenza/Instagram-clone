@@ -22,6 +22,6 @@
   
 ## Screenshot
 ![Auth View](Documentation/auth.png)
-![Feed](Documentation/feed.png)
+![Feed](Documentation/feed_view.png)
 ![Create Post](Documentation/create_post.png)
 
