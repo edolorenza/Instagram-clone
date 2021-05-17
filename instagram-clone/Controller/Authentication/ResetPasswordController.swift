@@ -15,6 +15,7 @@ class ResetPasswordController: ViewController{
     //MARK: - Properties
     private var viewModel = ResetPasswordViewModel()
     weak var delegate: ResetPasswordControllerDelegate?
+    var emailText: String?
     
     private let logoImageView: UIImageView =  {
         let iv = UIImageView()
@@ -98,6 +99,10 @@ class ResetPasswordController: ViewController{
     func configureUI() {
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
+        
+        emailTextField.text = emailText
+        viewModel.email = emailText
+        updateForm()
         
         self.view.addSubview(backButton)
         backButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 16, paddingLeft: 16)
