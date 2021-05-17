@@ -90,6 +90,7 @@ class FeedCell: UICollectionViewCell{
     private let captionLabel: UILabel =  {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
+        label.numberOfLines = 0
         return label
     }()
     
@@ -152,7 +153,7 @@ class FeedCell: UICollectionViewCell{
         likeLabel.anchor(top: stackView.bottomAnchor, left: leftAnchor, paddingTop: -4, paddingLeft: 10)
         
         self.addSubview(captionLabel)
-        captionLabel.anchor(top: likeLabel.bottomAnchor, left: leftAnchor, paddingTop: 4, paddingLeft: 10)
+        captionLabel.anchor(top: likeLabel.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 4, paddingLeft: 10, paddingRight: 10)
         
         self.addSubview(postTimeLabel)
         postTimeLabel.anchor(top: captionLabel.bottomAnchor, left: leftAnchor, paddingTop: 4, paddingLeft: 10)
