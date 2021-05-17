@@ -118,6 +118,9 @@ struct PostService {
             snapshot?.documents.forEach({ document  in
                 fetchSinglePost(withPostId: document.documentID) { post in
                     posts.append(post)
+                    posts.sort { (posts1, post2) -> Bool in
+                        return posts1.timestamp.seconds > post2.timestamp.seconds
+                    }
                     completion(posts)
                 }
             })
