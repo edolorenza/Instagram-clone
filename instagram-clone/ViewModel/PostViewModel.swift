@@ -24,8 +24,6 @@ struct PostViewModel {
         }else {
             return "\(post.likes) like"
         }
-       
-        
     }
     
     var likeButtonTintColor: UIColor {
@@ -43,6 +41,15 @@ struct PostViewModel {
     var ownerUsername: String{
         return post.ownerUsername
     }
+    
+    var timeStampString: String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.second, .minute, .hour, .day, .weekOfMonth]
+        formatter.maximumUnitCount = 1
+        formatter.unitsStyle = .full
+        return formatter.string(from: post.timestamp.dateValue(), to: Date()) ?? "2m"
+    }
+    
     
     init(post: Post){
         self.post = post
