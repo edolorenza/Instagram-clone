@@ -137,6 +137,7 @@ extension ProfileController: ProfileHeaderDelegate {
                 self.user.isFollowed = true
                 self.collectionView.reloadData()
                 NotificationService.uploadNotification(toUid: user.uid, fromUser: currentUser , type: .follow)
+                PostService.updateUserFeedAfterFollowing(user: user)
             }
         }
     }
