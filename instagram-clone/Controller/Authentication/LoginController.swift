@@ -40,6 +40,7 @@ class LoginController: ViewController{
         button.setTitleColor(.systemBlue, for: .normal)
         button.setTitle("Forgot Password?", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 10)
+        button.addTarget(self, action: #selector(handleShowResetPassword), for: .touchUpInside)
         return button
     }()
     
@@ -92,6 +93,11 @@ class LoginController: ViewController{
     @objc func handleShowSignUp() {
         let controller = RegistrationController()
         controller.delegate = delegate
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc func handleShowResetPassword() {
+        let controller = ResetPasswordController()
         navigationController?.pushViewController(controller, animated: true)
     }
     

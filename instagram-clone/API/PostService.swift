@@ -23,7 +23,10 @@ struct PostService {
                         "ownerImageUrl": user.profileImages,
                         "ownerUsername": user.username ] as [String : Any]
             
-            COLLECTION_POSTS.addDocument(data: data,completion: completion)
+            
+            let docRef = COLLECTION_POSTS.addDocument(data: data,completion: completion)
+            
+            self.updateUserFeedAfterPost(postID: docRef.documentID)
         }
     }
     
@@ -118,6 +121,20 @@ struct PostService {
                     completion(posts)
                 }
             })
+        }
+    }
+    
+    private static func updateUserFeedAfterPost(postID: String) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        COLLECTION_FOLLOWERS.document(uid).collection("user-followers").getDocuments { snapshot, _ in
+            guard let documents = snapshot?.documents else { return }
+            
+            documents.forEach { documents in
+                COLLECTION_USERS.document(documents.documentID).collection("user-feed").document(postID).setData([:])
+            }
+            
+            COLLECTION_USERS.document(uid).collection("user-feed").document(postID).setData([:])
         }
     }
 }
